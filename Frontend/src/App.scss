@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans+Narrow:wght@400;700&display=swap');
+
+@mixin dark-mode {
+  --acento: #971110;
+  --fondoPrincipal: #0F0F10;
+  --fondoCards: #151517;
+  --separadores: #1C1C1E;
+  --texto: #FFFFFF;
+}
+
+@mixin light-mode {
+  --acento: #971110;
+  --fondoPrincipal: #FFFFFF;
+  --fondoCards: #F5F5F5;
+  --separadores: #E6E6E6;
+  --texto: #000000;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin centerAbsolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+$acento: #971110;
+$fondoPrincipal: #0F0F10;
+$fondoCards: #151517;
+$separadores: #1C1C1E;
+$texto: #FFFFFF;
+$titulo: "Montserrat", sans-serif;
+$tipoDeTexto: "PT Sans Narrow", sans-serif;
+$tamañoT: clamp(24px, 32px, 40px);
+$tamañoP: clamp(14px, 18px, 20px);
+$fs: normal;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $texto;
+
+  body {
+    background-color: $fondoPrincipal;
+
+    h2 {
+      font-family: $titulo;
+      font-weight: 500;
+      font-size: $tamañoT;
+    }
+
+    p, button, input, textarea {
+      font-family: $tipoDeTexto;
+      font-size: $tamañoP;
+      font-style: $fs;
+      color: $acento;
+    }
+  }
+}
+
+/* Para celular */
+@media only screen and (max-width: 768px) {
+  .auth-container {
+    @include centerAbsolute();
+    @include center();
+
+    width: 80%;
+    padding: 20vh 0;
+    flex-direction: column;
+    background-color: $fondoCards;
+
+    h2{
+      margin-bottom: 20px;
+    } 
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      max-width: 400px;
+      margin: 0 auto;
+
+      input {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid $separadores;
+        border-radius: 5px;
+        background-color: $fondoPrincipal;
+        color: $texto;
+      }
+
+      .buttonJoin {
+        margin: 10px 0;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: $acento;
+        color: #FFFFFF;
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken($acento, 10%);
+        }
+      }
+    }
+
+    .buttonChange {
+      margin-top: 15px;
+      background: none;
+      border: none;
+      color: $acento;
+      cursor: pointer;
+      text-decoration: underline;
+
+      &:hover {
+        color: darken($acento, 10%);
+      }
+    }
+  }
+
+  .app {
+    width: 100vw;
+    height: 100vh;
+
+    header {
+      @include center();
+
+      width: 100%;
+      padding: 10px 20px;
+      justify-content: space-between;
+      background-color: $fondoCards;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      button {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: $acento;
+        color: #FFFFFF;
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken($acento, 10%);
+        }
+      }
+    }
+
+    .crearNota {
+      @include center();
+
+      padding: 15px;
+
+      textarea {
+        width: 70%;
+        height: 50px;
+        margin: 0 10px;
+        padding: 10px;
+        border: 1px solid $separadores;
+        border-radius: 5px;
+        background-color: $fondoPrincipal;
+        color: $texto;
+        resize: none;
+      }
+
+      button {
+        margin: 0 10px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: $acento;
+        color: #FFFFFF;
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken($acento, 10%);
+        }
+      }
+    }
+
+    .tituloMuro {
+      margin: 20px 0;
+      padding: 0 10px;
+      font-size: 1.8rem;
+    }
+
+    .listaDeNotas {
+      padding: 10px;
+
+      .tarjetaNota {
+        background-color: $fondoCards;
+        border: 1px solid $separadores;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+
+        p {
+          margin-bottom: 10px;
+          color: $texto;
+        }
+
+        small {
+          color: $acento;
+        }
+
+        .eliminarNota {
+          margin-left: 10px;
+          padding: 5px 8px;
+          float: right;
+          border: none;
+          border-radius: 5px;
+          background-color: darken($acento, 20%);
+          color: #FFFFFF;
+          cursor: pointer;
+
+          &:hover {
+            background-color: darken($acento, 30%);
+          }
+        }
+
+        .inputTextComentario {
+          width: 100%;
+          padding: 8px;
+          margin-right: 10px;
+          border: 1px solid $separadores;
+          border-radius: 5px;
+          background-color: $fondoPrincipal;
+          color: $texto;
+        }
+
+        .botonDeComentario {
+          outline: none;
+          border: none;
+          color: $texto;
+          background-color: $fondoCards;
+        }
+      }
+    }
+  }
+}
